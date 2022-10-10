@@ -14,6 +14,11 @@ const EsquemaCliente = new Schema({
         type: String,
         required: true
     },
+    rol: {
+        type: String,
+        required: true,
+        default: "usuario"
+    }
 }, {
     timestamps: true
 });
