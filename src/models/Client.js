@@ -29,8 +29,8 @@ ClientSchema.methods.encryptPassword = async password => {
     return await bcrypt.hash(password, salt);
 };
 
-ClientSchema.methods.comparePassword = async function(password) {
+ClientSchema.methods.matchPassword = async function(password) {
     return await bcrypt.compare(password, this.password);
-}
+};
 
 module.exports = model("Client", ClientSchema);

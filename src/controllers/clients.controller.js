@@ -1,5 +1,7 @@
 const clientsControllers = {};
 
+const passport = require("passport");
+
 const Client = require("../models/Client");
 
 clientsControllers.renderSingupForm = (req, res) => {
@@ -47,12 +49,18 @@ clientsControllers.renderSinginForm = (req, res) => {
     res.render("clients/singin")
 };
 
-clientsControllers.singin = (req, res) => {
-    res.send("Iniciando")
-};
+clientsControllers.singin = passport.authenticate("local", {
+    failureRedirect: "/clientes/iniciar-sesion",
+    successRedirect: "/direcciones",
+    failureFlash: true
+});
 
 clientsControllers.logout = (req, res) => {
-    res.send("Cerrando sesion");
+    req.logout((err) => {
+        if(err) {return next(err);}
+        req.flash("success_msg", "Has cerrado sesion");
+        res.redirect("/clientes/iniciar-sesion");
+    });
 }
 
 module.exports = clientsControllers;
