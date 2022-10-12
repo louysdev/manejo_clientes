@@ -8,8 +8,9 @@ directionsController.renderDirectionForm = (req, res) => {
 
 directionsController.createDirection = async (req, res) => {
     const {street, noHouse, neighborhood, country} = req.body;
-    const newDirection = new Direction({street , noHouse , neighborhood , country });
+    const newDirection = new Direction({street, noHouse, neighborhood, country});
     await newDirection.save();
+    req.flash("susccess_msg", "Direccion creada correctamente");
     res.redirect("/direcciones");
 };
 
@@ -27,11 +28,13 @@ directionsController.renderEditForm = async (req, res) => {
 directionsController.updateDirection = async (req, res) => {
     const {street, noHouse, neighborhood, country} = req.body;
     await Direction.findByIdAndUpdate(req.params.id, {street, noHouse, neighborhood, country});
+    req.flash("susccess_msg", "Direccion actualizada correctamente");
     res.redirect("/direcciones")
 }
 
 directionsController.deleteDirection = async (req, res) => {
     await Direction.findByIdAndDelete(req.params.id);
+    req.flash("susccess_msg", "Direccion eliminada correctamente");
     res.redirect("/direcciones");
 }
 
