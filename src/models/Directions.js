@@ -1,19 +1,19 @@
 const {Schema, model} = require("mongoose");
 
-const EsquemaDireccion = new Schema({
-    calle: {
+const DirectionSchema = new Schema({
+    street: {
         type: String,
         required: true
     },
-    no_casa: {
-        type: Number,
+    noHouse: {
+        type: Integer,
         required: true
     },
-    vecindario: {
+    neighborhood: {
         type: String,
         required: true
     },
-    pais: {
+    country: {
         type: String,
         required: true
     }
@@ -21,5 +21,5 @@ const EsquemaDireccion = new Schema({
     timestamps: true
 });
 
-module.export = model("Direccion", EsquemaDireccion);
+module.export = model("Direction", DirectionSchema);
 
