@@ -1,10 +1,11 @@
 const directionsController = {};
 
 directionsController.renderDirectionForm = (req, res) => {
-    res.send("Direccion agregada")
+    res.render("directions/new-directions");
 };
 
 directionsController.createDirection = (req, res) => {
+    console.log(req.body);
     res.send("Nueva direccion")
 };
 

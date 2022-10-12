@@ -1,0 +1,30 @@
+<!-- TOdo esto ese el diseño -->
+
+<div class="col-md-4 mx-auto">
+    <div class="card text-center">
+        <div class="card-header">
+            <h3>Nueva direccion</h3>
+        </div>
+        <div class="card-body">
+            <form action="/direcciones/agregar" method="POST">
+                <div class="form-group">
+                    <input type="text" name="street" class="form-control" placeholder="Nombre de la calle" autofocus>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="noHouse" class="form-control" placeholder="Numero de la casa">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="neighborhood" class="form-control" placeholder="Nombre del vecindario">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="country" class="form-control" placeholder="Nombre del pais">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary btn-block">
+                        Crear
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
