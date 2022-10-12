@@ -41,19 +41,9 @@ app.use((req, res, next) => {
     res.locals.success_msg = req.flash("success_msg");
     res.locals.error_msg = req.flash("error_msg");
     res.locals.error = req.flash("error");
-    res.locals.client = req.client || null;
-    res.locals.user = asginarrol(req.client.rol);
+    res.locals.user = req.user || null;
     next();
 });
-
-//Pruebas
-function asginarrol(rol) {
-        if(rol == "user") {
-            return true;
-        } else {
-            return false;
-        }
-}
 
 // Rutas
 app.use(require("./routes/index.routes"));

@@ -9,19 +9,23 @@ directionsController.renderDirectionForm = (req, res) => {
 directionsController.createDirection = async (req, res) => {
     const {street, noHouse, neighborhood, country} = req.body;
     const newDirection = new Direction({street, noHouse, neighborhood, country});
+    newDirection.user = req.user.id;
     await newDirection.save();
     req.flash("susccess_msg", "Direccion creada correctamente");
     res.redirect("/direcciones");
 };
 
 directionsController.renderDirections = async (req, res) => {
-    const directions = await Direction.find().lean();
+    const directions = await Direction.find({user: req.user.id}).sort({createdAt: "desc"}).lean();
     res.render("directions/all-directions", { directions });
 }
 
 directionsController.renderEditForm = async (req, res) => {
     const direction = await Direction.findById(req.params.id).lean();
-    console.log(direction);
+    if(direction.user != req.user.id) {
+        req.flash("error_msg", "No estas autorizado");
+        return res.redirect("/direcciones");
+    }
     res.render("directions/edit-directions", {direction});
 }
 

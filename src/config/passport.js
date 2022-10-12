@@ -24,12 +24,12 @@ passport.use(new LocalStrategy({
     }
 }));
 
-passport.serializeUser((client, done) => {
-    done(null, client.id);
+passport.serializeUser((user, done) => {
+    done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    Client.findById(id, (err, client) => {
-        done(err, client)
-    });
-})
+    Client.findById(id, (err, user) => {
+        done(err, user)
+    })
+});
