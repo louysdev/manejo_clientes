@@ -6,7 +6,7 @@ const DirectionSchema = new Schema({
         required: true
     },
     noHouse: {
-        type: Integer,
+        type: String,
         required: true
     },
     neighborhood: {
@@ -21,5 +21,5 @@ const DirectionSchema = new Schema({
     timestamps: true
 });
 
-module.export = model("Direction", DirectionSchema);
+module.exports = model("Direction", DirectionSchema);
 
