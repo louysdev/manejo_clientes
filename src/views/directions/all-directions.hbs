@@ -10,7 +10,7 @@
                     <p>#{{noHouse}}</p>
                     <p>{{neighborhood}}</p>
                     <p>{{country}}</p>
-                    <form action="/direcciones/eliminar/{{_id}}" method="POST">
+                    <form action="/direcciones/eliminar/{{_id}}?_method=DELETE" method="POST">
                         <button type="submit" class="btn btn-danger btn-block btn-sn">
                             Eliminar
                         </button>

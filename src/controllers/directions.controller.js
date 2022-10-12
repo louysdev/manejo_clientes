@@ -10,7 +10,7 @@ directionsController.createDirection = async (req, res) => {
     const {street, noHouse, neighborhood, country} = req.body;
     const newDirection = new Direction({street , noHouse , neighborhood , country });
     await newDirection.save();
-    res.send("Nueva direccion")
+    res.redirect("/direcciones")
 };
 
 directionsController.renderDirections = async (req, res) => {
@@ -26,8 +26,9 @@ directionsController.updateDirection = (req, res) => {
     res.send("Actulizar direccion");
 }
 
-directionsController.deleteDirection = (req, res) => {
-    res.send("Direccion eliminada")
+directionsController.deleteDirection = async (req, res) => {
+    await Direction.findByIdAndDelete(req.params.id);
+    res.redirect("/direcciones");
 }
 
 module.exports = directionsController;
